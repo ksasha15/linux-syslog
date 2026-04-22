@@ -1,6 +1,6 @@
 Vagrant.configure("2") do |config|
 	# Base VM OS configuration.
-	config.vm.box = ""bento/ubuntu-22.04"
+	config.vm.box = "bento/ubuntu-22.04"
 	config.vm.provider :virtualbox do |v|
 		v.memory = 1512
 		v.cpus = 2
