@@ -173,6 +173,9 @@ $IncludeConfig /etc/rsyslog.d/*.conf
 $template RemoteLogs,"/var/log/rsyslog/%HOSTNAME%/%PROGRAMNAME%.log"
 *.* ?RemoteLogs
 & ~
+```
+##### Настраиваем аудит, который будет отслеживать изменения конфигураций nginx. Все критичные логи с web собираюся и локально и удаленно. Все логи с nginx уходят на удаленный сервер (локально только критичные). Логи аудита также уходят на удаленную систему.
+```
 root@log:~# systemctl restart rsyslog
 root@log:~# ss -tuln
 Netid      State       Recv-Q      Send-Q            Local Address:Port           Peer Address:Port     Process
@@ -294,8 +297,4 @@ ls: cannot access '/var/www/': No such file or directory
 root@log:~# cat /var/log/rsyslog/web/nginx_error.log
 Apr 25 07:47:02 web nginx_error: 2026/04/25 07:47:02 [error] 2571#2571: *3 directory index of "/var/www/html/" is forbidden, client: 192.168.56.1, server: _, request: "GET / HTTP/1.1", host: "192.168.56.10"
 root@log:~#
-```
-##### Настраиваем аудит, который будет отслеживать изменения конфигураций nginx. Все критичные логи с web собираюся и локально и удаленно. Все логи с nginx уходят на удаленный сервер (локально только критичные). Логи аудита также уходят на удаленную систему.
-```
-
 ```
